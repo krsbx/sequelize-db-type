@@ -1,0 +1,9 @@
+src
+node_modules
+tsconfig.json
+README.md
+yarn.lock
+yarn-error.log
+.pnpm-debug.log
+out
+/sequelize-db-type
