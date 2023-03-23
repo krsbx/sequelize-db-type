@@ -13,9 +13,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
-      # - run: npm test
-      - run: npm run build
+      # Yarn Install
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+      # Yarn Build
+      - name: Run build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
