@@ -1,6 +1,6 @@
 {
   "name": "sequelize-db-type",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "repository": "git@github.com:krsbx/sequelize-db-type.git",
   "author": "krsbx",
