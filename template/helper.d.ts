@@ -5,7 +5,7 @@ import {{ key }} from '{{ value }}';
 
 export type ModelBase<T> = Record<
   string,
-  Model & {
+  Model<unknown, unknown> & {
     associate?: (db: T) => void;
   }
 >;
