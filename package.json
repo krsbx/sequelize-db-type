@@ -1,6 +1,6 @@
 {
   "name": "sequelize-db-type",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "repository": "git@github.com:krsbx/sequelize-db-type.git",
   "author": "krsbx",
@@ -8,18 +8,18 @@
   "dependencies": {
     "app-root-path": "^3.1.0",
     "fs-extra": "^11.1.1",
-    "patch-package": "^6.5.1",
     "template-file": "^6.0.1"
   },
   "peerDependencies": {
-    "sequelize": "*",
-    "sequelize-cli": "6.6.0"
+    "sequelize-cli": "6.6.0",
+    "sequelize": "*"
   },
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
     "prepare": "husky install",
-    "postinstall": "patch-package"
+    "postinstall": "node ./dist/patch.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
@@ -39,7 +39,10 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "nodemon": "^2.0.21",
+    "patch-package": "^6.5.1",
     "prettier": "^2.8.4",
+    "rimraf": "^4.4.1",
+    "sequelize-cli": "6.6.0",
     "ts-node": "^10.9.1",
     "type-fest": "^3.6.1",
     "typescript": "^5.0.2"
