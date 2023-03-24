@@ -9,6 +9,8 @@ import {
   saveTemplateFile,
 } from './utils/builder';
 
+export { writer } from './utils/writer';
+
 const pkgJson: PackageJson = require('../package.json');
 
 export async function main() {
@@ -40,5 +42,3 @@ export async function main() {
     content
   );
 }
-
-main();

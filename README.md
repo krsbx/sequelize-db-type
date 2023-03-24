@@ -51,11 +51,15 @@
 npm i -D sequelize-db-type@latest
 ```
 
-2. Add your model folder path to your `package.json` in `sequelize-db-type`
+2. Add your model/migration/seeder folder path to your `package.json` in `sequelize-db-type`
 
 ```diff
 # Rest of your `package.json`
-+ sequelize-db-type: "your-model-folder-path"
++ "sequelize-db-type": {
++  "models": "your-model-folder-path",
++  "migrations": "your-migration-folder-path",
++  "seeders": "your-seeder-folder-path",
++ }
 }
 ```
 
