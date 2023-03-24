@@ -1,8 +1,12 @@
 import fs from 'fs-extra';
 import path from 'path';
 import appRootPath from 'app-root-path';
-import * as templateFile from 'template-file';
-import { HELPER_TEMPLATE_PATH } from './constant';
+import type { PackageJson } from 'type-fest';
+import template from 'lodash.template';
+import snakeCase from 'lodash.snakecase';
+import { HELPER_TEMPLATE } from './constant';
+
+const pkgJson: PackageJson = require('../../package.json');
 
 export const generateTemplateFormat = (
   modelsPath: string,
@@ -10,8 +14,12 @@ export const generateTemplateFormat = (
 ) =>
   fileNames.reduce((prev, curr) => {
     prev.push({
-      key: curr,
-      value: path.resolve(appRootPath.path, modelsPath, curr),
+      name: snakeCase(curr),
+      fileName: curr,
+      path: path.relative(
+        path.join(appRootPath.path, 'node_modules', pkgJson.name as string),
+        path.join(appRootPath.path, modelsPath, curr)
+      ),
     });
 
     return prev;
@@ -20,7 +28,7 @@ export const generateTemplateFormat = (
 export const renderTemplate = (
   modelsName: ReturnType<typeof generateTemplateFormat>
 ) =>
-  templateFile.renderFile(HELPER_TEMPLATE_PATH, {
+  template(HELPER_TEMPLATE)({
     modelsName,
   });
 

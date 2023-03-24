@@ -1,7 +1,7 @@
 import { Model, Sequelize } from 'sequelize';
-{{ #modelsName }}
-import {{ key }} from '{{ value }}';
-{{ /modelsName }}
+<% modelsName.forEach(({ name, path }) => { %>
+import <%= name %> from '<%= path %>';
+<% }) %>
 
 export type ModelBase<T> = Record<
   string,
@@ -11,9 +11,9 @@ export type ModelBase<T> = Record<
 >;
 
 export type Models<T> = ModelBase<T> & {
-{{ #modelsName }}
-  {{ key }}: ReturnType<typeof {{ key }}>;
-{{ /modelsName }}
+<% modelsName.forEach(({ fileName, name}) => { %>
+  '<%= fileName %>': ReturnType<typeof <%= name %>>;
+<% }) %>
 };
 
 export type Database = Models<unknown> & {
