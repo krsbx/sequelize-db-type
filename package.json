@@ -1,6 +1,6 @@
 {
   "name": "sequelize-db-type",
-  "version": "0.1.0",
+  "version": "0.2.5",
   "main": "dist/index.js",
   "repository": "git@github.com:krsbx/sequelize-db-type.git",
   "author": "krsbx",
@@ -53,5 +53,9 @@
       "eslint --fix"
     ]
   },
-  "sequelize-db-type": "src/models"
+  "sequelize-db-type": {
+    "models": "src/models",
+    "migrations": "src/migrations",
+    "seeders": "src/seeders"
+  }
 }

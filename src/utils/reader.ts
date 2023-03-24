@@ -1,17 +1,41 @@
-import type { JsonValue, PackageJson } from 'type-fest';
+import type { JsonValue, JsonObject, PackageJson } from 'type-fest';
 import fs from 'fs-extra';
 import appRootPath from 'app-root-path';
 import path from 'path';
 
+export const getPackageJson = () =>
+  require(path.resolve(appRootPath.path, 'package.json')) as PackageJson;
+
+export const getConfigs = () => {
+  const pkgJson = getPackageJson();
+
+  const userConfig = pkgJson['sequelize-db-type'];
+
+  return userConfig as JsonObject;
+};
+
 export const getModelPath = () => {
-  const pkgJson: PackageJson = require(path.resolve(
-    appRootPath.path,
-    'package.json'
-  ));
+  const config = getConfigs();
 
-  const modelsPath = pkgJson['sequelize-db-type'];
+  if (!config) return;
 
-  return modelsPath;
+  return (config?.models ?? '') as string;
+};
+
+export const getMigrationPath = () => {
+  const config = getConfigs();
+
+  if (!config) return;
+
+  return (config?.migrations ?? '') as string;
+};
+
+export const getSeederPath = () => {
+  const config = getConfigs();
+
+  if (!config) return;
+
+  return (config?.seeders ?? '') as string;
 };
 
 export const getModelFileNames = async (modelsPath: JsonValue) => {

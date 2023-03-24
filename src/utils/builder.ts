@@ -25,8 +25,8 @@ export const renderTemplate = (
   });
 
 export const saveTemplateFile = async (writePath: string, content: string) => {
-  if (!fs.existsSync(path.dirname(writePath)))
-    fs.mkdirSync(path.dirname(writePath), {
+  if (!fs.existsSync(path.resolve(writePath, '..')))
+    fs.mkdirSync(path.resolve(writePath, '..'), {
       recursive: true,
     });
 
