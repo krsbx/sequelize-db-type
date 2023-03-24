@@ -30,11 +30,6 @@ export async function main() {
     fileNames
   );
 
-  if (!modelsName.length) {
-    console.log('No model has been created yet, stopping...');
-    return;
-  }
-
   const content = await renderTemplate(modelsName);
 
   return saveTemplateFile(
