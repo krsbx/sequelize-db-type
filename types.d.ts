@@ -5,7 +5,7 @@ export type GeoJsons = {
   };
   LineString: {
     type: 'LineString';
-    coordinates: [[number, number][]];
+    coordinates: [number, number][];
   };
   Polygon: {
     type: 'Polygon';
@@ -13,7 +13,7 @@ export type GeoJsons = {
   };
   MultiPoint: {
     type: 'MultiPoint';
-    coordinates: [[number, number][]];
+    coordinates: [number, number][];
   };
   MultiLineString: {
     type: 'MultiLineString';
