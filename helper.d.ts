@@ -1,11 +1,6 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, ModelStatic, Sequelize } from 'sequelize';
 
-export type ModelBase<T> = Record<
-  string,
-  Model<unknown, unknown> & {
-    associate?: (db: T) => void;
-  }
->;
+export type ModelBase<T> = Record<string, ModelStatic<Model<unknown, unknown>>>;
 
 export type Models<T> = ModelBase<T>;
 
